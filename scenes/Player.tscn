@@ -1,0 +1,244 @@
+[gd_scene load_steps=31 format=3 uid="uid://ddoci0u7v02m0"]
+
+[ext_resource type="Script" path="res://scripts/Controller/Player.cs" id="1_dqv1f"]
+[ext_resource type="Texture2D" uid="uid://dqglartxkdxqk" path="res://graphics/ships/Ships/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="1_thapy"]
+[ext_resource type="PackedScene" uid="uid://h1f0w4nfs425" path="res://scenes/Rocket.tscn" id="2_hyaxq"]
+[ext_resource type="Texture2D" uid="uid://b04btqs7ot253" path="res://graphics/ships/Ships/Main Ship/Main Ship - Engines/PNGs/Main Ship - Engines - Supercharged Engine.png" id="3_2t6qp"]
+[ext_resource type="Texture2D" uid="uid://pslew0mb37nh" path="res://graphics/ships/Ships/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Very damaged.png" id="4_862dv"]
+[ext_resource type="Texture2D" uid="uid://b7va23u0g6mad" path="res://graphics/ships/Ships/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Supercharged Engine - Idle.png" id="4_dubuq"]
+[ext_resource type="Texture2D" uid="uid://dcosvu3h0u7v8" path="res://graphics/ships/Ships/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Damaged.png" id="4_svisx"]
+[ext_resource type="Texture2D" uid="uid://dlqfwcllmpjtq" path="res://graphics/ships/Ships/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Supercharged Engine - Powering.png" id="5_3mp4u"]
+[ext_resource type="Texture2D" uid="uid://eh85uvycjccg" path="res://graphics/ships/Ships/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Slight damage.png" id="5_d5ws5"]
+[ext_resource type="Texture2D" uid="uid://cyw2tbl8wudbk" path="res://graphics/ships/Ships/Main Ship/Main Ship - Weapons/PNGs/Main Ship - Weapons - Auto Cannon.png" id="6_mek7j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_thrcy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_thapy")
+}],
+"loop": true,
+"name": &"100hp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_862dv")
+}],
+"loop": true,
+"name": &"25hp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_svisx")
+}],
+"loop": true,
+"name": &"50hp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_d5ws5")
+}],
+"loop": true,
+"name": &"75hp",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnbnw"]
+atlas = ExtResource("4_dubuq")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm76o"]
+atlas = ExtResource("4_dubuq")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e17fx"]
+atlas = ExtResource("4_dubuq")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmbgy"]
+atlas = ExtResource("4_dubuq")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el8rm"]
+atlas = ExtResource("5_3mp4u")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyi0p"]
+atlas = ExtResource("5_3mp4u")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1rgm"]
+atlas = ExtResource("5_3mp4u")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4udi"]
+atlas = ExtResource("5_3mp4u")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3r8m4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnbnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm76o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e17fx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmbgy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el8rm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyi0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1rgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4udi")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7752"]
+atlas = ExtResource("6_mek7j")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vrcj"]
+atlas = ExtResource("6_mek7j")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oggi0"]
+atlas = ExtResource("6_mek7j")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulq2b"]
+atlas = ExtResource("6_mek7j")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2dv2"]
+atlas = ExtResource("6_mek7j")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alxw0"]
+atlas = ExtResource("6_mek7j")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm5oq"]
+atlas = ExtResource("6_mek7j")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ammqe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7752")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vrcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oggi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulq2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2dv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alxw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rm5oq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7752")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 20.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55t4q"]
+bg_color = Color(0.976471, 0.266667, 0.286275, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wlwep"]
+radius = 54.0
+height = 126.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_dqv1f")
+rocket = ExtResource("2_hyaxq")
+
+[node name="Base" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_thrcy")
+animation = &"50hp"
+
+[node name="Rocket" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 24)
+scale = Vector2(2, 2)
+texture = ExtResource("3_2t6qp")
+
+[node name="AnimationRockets" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 22)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3r8m4")
+animation = &"move"
+frame_progress = 0.431212
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(2, -27, 31, 10, 31, 22, 20, 44, 6, 46, -6, 46, -20, 44, -31, 22, -31, 10, -2, -27)
+
+[node name="AnimatedWeapon" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -3)
+scale = Vector2(1.9, 1.9)
+sprite_frames = SubResource("SpriteFrames_ammqe")
+animation = &"fire"
+frame = 7
+frame_progress = 1.0
+
+[node name="Gun1" type="Marker2D" parent="."]
+position = Vector2(-17, -18)
+rotation = -1.5708
+
+[node name="Gun2" type="Marker2D" parent="."]
+position = Vector2(17, -18)
+rotation = -1.5708
+
+[node name="PlayerView" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="PlayerView"]
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 167.0
+offset_bottom = 37.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_55t4q")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 12)
+shape = SubResource("CapsuleShape2D_wlwep")
+
+[connection signal="body_entered" from="HitBox" to="." method="BodyEntered"]

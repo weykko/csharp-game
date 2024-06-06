@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://tjdksjqyl366"]
+
+[ext_resource type="Script" path="res://scripts/Controller/Alien.cs" id="1_aajmy"]
+[ext_resource type="Texture2D" uid="uid://1qhimyjds2o2" path="res://graphics/alien/SciFi_DungeonTileset16x16_0x72Like.png" id="2_ig41c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsdcn"]
+atlas = ExtResource("2_ig41c")
+region = Rect2(1, 1, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8fdw"]
+atlas = ExtResource("2_ig41c")
+region = Rect2(1, 33, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_adn1p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsdcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8fdw")
+}],
+"loop": true,
+"name": &"move",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4b2ld"]
+radius = 25.0799
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uh3dp"]
+radius = 37.054
+
+[node name="Alien" type="CharacterBody2D"]
+script = ExtResource("1_aajmy")
+
+[node name="AnimatedAlien" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_adn1p")
+animation = &"move"
+frame_progress = 0.215148
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 5)
+shape = SubResource("CircleShape2D_4b2ld")
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(1, 5)
+shape = SubResource("CircleShape2D_uh3dp")
+
+[connection signal="body_entered" from="DamageArea" to="." method="BodyEntered"]

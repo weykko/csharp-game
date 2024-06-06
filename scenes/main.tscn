@@ -1,0 +1,192 @@
+[gd_scene load_steps=11 format=3 uid="uid://cr4ifu47t1i6x"]
+
+[ext_resource type="Script" path="res://scripts/Model/main.cs" id="1_a4osi"]
+[ext_resource type="Texture2D" uid="uid://s0ywjhquq08r" path="res://graphics/background/Space Background.png" id="1_s4xye"]
+[ext_resource type="PackedScene" uid="uid://ddoci0u7v02m0" path="res://scenes/Player.tscn" id="2_5ae8j"]
+[ext_resource type="Script" path="res://scripts/Model/Earth.cs" id="3_uvsi3"]
+[ext_resource type="Texture2D" uid="uid://clb8hjko6bu0t" path="res://graphics/planets/2882525129.png" id="4_28660"]
+[ext_resource type="PackedScene" uid="uid://tjdksjqyl366" path="res://scenes/Alien.tscn" id="4_mea5h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n70ow"]
+radius = 150.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eclos"]
+size = Vector2(418.75, 1013)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ry01"]
+size = Vector2(1368.5, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgb5n"]
+size = Vector2(451, 1070)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_a4osi")
+PlayerScene = ExtResource("2_5ae8j")
+
+[node name="SpaceBackground" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, -200)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("1_s4xye")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -207)
+zoom = Vector2(0.9, 0.9)
+
+[node name="Earth" type="StaticBody2D" parent="."]
+script = ExtResource("3_uvsi3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Earth"]
+position = Vector2(0, 400)
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_n70ow")
+
+[node name="Sprite2D" type="Sprite2D" parent="Earth"]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, 400)
+rotation = -1.79594
+scale = Vector2(3, 3)
+texture = ExtResource("4_28660")
+
+[node name="Player" parent="." instance=ExtResource("2_5ae8j")]
+position = Vector2(0, -200)
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(0, -250)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Alien" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(121, -695)
+
+[node name="Alien5" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(-428, -1174)
+
+[node name="Alien2" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(-387, -612)
+
+[node name="Alien3" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(-131, -697)
+
+[node name="Alien4" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(400, -611)
+
+[node name="Alien8" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(158, -1271)
+
+[node name="Alien7" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(-505, -1774)
+
+[node name="Alien6" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(-969, -1485)
+
+[node name="Alien9" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(-632, -1038)
+
+[node name="Alien10" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(191, -1888)
+
+[node name="Alien11" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(638, -996)
+
+[node name="Alien12" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(497, -1800)
+
+[node name="Alien13" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(-221, -1866)
+
+[node name="Alien14" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(-743, -1643)
+
+[node name="Alien15" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(444, -1150)
+
+[node name="Alien16" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(-155, -1260)
+
+[node name="Alien17" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(1049, -1450)
+
+[node name="Alien18" parent="Enemies" instance=ExtResource("4_mea5h")]
+position = Vector2(798, -1653)
+
+[node name="Blocker" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(193, -612)
+
+[node name="left" type="CollisionShape2D" parent="Blocker"]
+position = Vector2(-1043.63, 261.5)
+shape = SubResource("RectangleShape2D_eclos")
+one_way_collision_margin = 12.5
+
+[node name="right" type="CollisionShape2D" parent="Blocker"]
+position = Vector2(-197.25, 784.5)
+shape = SubResource("RectangleShape2D_3ry01")
+
+[node name="bottom" type="CollisionShape2D" parent="Blocker"]
+position = Vector2(672.5, 269)
+shape = SubResource("RectangleShape2D_wgb5n")
+
+[node name="GameOver" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.5
+offset_top = -320.0
+offset_right = 97.5
+offset_bottom = -234.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="GameOver"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+text = "Вы проиграли"
+
+[node name="RestartButton" type="Button" parent="GameOver"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+text = "Рестарт"
+
+[node name="MenuButton" type="Button" parent="GameOver"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+text = "В меню"
+
+[node name="GameWin" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.5
+offset_top = -320.0
+offset_right = 97.5
+offset_bottom = -234.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameWinLabel" type="Label" parent="GameWin"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+text = "Вы выиграли"
+horizontal_alignment = 1
+
+[node name="MenuButton" type="Button" parent="GameWin"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+text = "В меню"
+
+[connection signal="pressed" from="GameOver/RestartButton" to="." method="RestartPressed"]
+[connection signal="pressed" from="GameOver/MenuButton" to="." method="MenuPressed"]
+[connection signal="pressed" from="GameWin/MenuButton" to="." method="MenuPressed"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cos52qogb3t3p"]
+
+[ext_resource type="Script" path="res://scripts/Model/MainMenu.cs" id="1_lnki5"]
+[ext_resource type="Texture2D" uid="uid://c77sfoklse86b" path="res://graphics/background/Space Background (1).png" id="2_yqfx7"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_lnki5")
+
+[node name="Back" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -55)
+scale = Vector2(0.59, 0.59)
+texture = ExtResource("2_yqfx7")
+centered = false
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = -66.5
+offset_right = 254.0
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Alien Monster Attack"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 27
+text = "Играть"
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="PlayPressed"]
