@@ -98,7 +98,7 @@ public partial class Player : CharacterBody2D
 	
 	public void Die()
 	{
-		GetParent().CallDeferred("SpawnPlayer");
 		QueueFree();
+  		main.GameOver();
 	}
 }
